@@ -1,0 +1,8 @@
+#!/bin/bash
+PROXY="http://192.168.20.1:8213"
+NAME="mariadb-galera"
+docker build --build-arg HTTP_PROXY=$PROXY \
+             --build-arg HTTPS_PROXY=$PROXY \
+             --build-arg http_proxy=$PROXY \
+             --build-arg https_proxy=$PROXY \
+             -t $NAME:$1 .
