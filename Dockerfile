@@ -23,7 +23,7 @@ ENV MARIADB_MAJOR=10.1 MYSQL_RUN_USER=mysql MARIADB_VERSION=10.1.22+maria-1~xeni
 
 RUN set -x \
 # add our user (MYSQL_RUN_USER) and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-	&& groupadd -r mysql && useradd -r -g mysql mysql \
+	&& groupadd -r "$MYSQL_RUN_USER" && useradd -r -g "$MYSQL_RUN_USER" "$MYSQL_RUN_USER" \
 	&& mkdir /docker-entrypoint-initdb.d \
 # install "apt-transport-https" for Percona's repo (switched to https-only)
 # install curl and jq requiered by etcd discover and registry services
